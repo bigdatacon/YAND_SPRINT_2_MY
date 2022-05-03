@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movies',  # наше новое приложение
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
