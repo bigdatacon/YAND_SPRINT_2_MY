@@ -99,8 +99,8 @@ class FilmWork(models.Model):
     type = models.CharField(_('Тип'), max_length=20, choices=FilmWorkType.choices)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # genres = models.ManyToManyField(Genre, through='GenreFilmWork', verbose_name=_('Жанры'))
-    # person = models.ManyToManyField(Person, through='PersonFilmWork', verbose_name=_('Персоны'))
+    genres = models.ManyToManyField(Genre, through='GenreFilmWork', verbose_name=_('Жанры'), related_name='filmworks')
+    persons = models.ManyToManyField(Person, through='PersonFilmWork', verbose_name=_('Персоны'), related_name='filmworks')
 
     class Meta:
         verbose_name = _('Кинопроизведение')
