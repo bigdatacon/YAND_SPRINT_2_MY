@@ -1,7 +1,7 @@
 
 --создание таблицы film_work
 #Для POSTGRES
-drop table content.film_work;
+drop table content.film_work CASCADE;
 CREATE TABLE IF NOT EXISTS content.film_work (
     id     uuid PRIMARY KEY,
     title         TEXT,

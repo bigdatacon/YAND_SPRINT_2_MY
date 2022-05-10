@@ -33,7 +33,7 @@ class Genre(models.Model):
 class Person(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     full_name = models.CharField(_('имя'), max_length=50)
-    #birth_date = models.DateTimeField(_('дата рождения'))
+    birth_date = models.DateTimeField(_('дата рождения'))
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -63,6 +63,9 @@ class GenreFilmWork(models.Model):
         return f"{self.film_work_id} - {self.genre_id}"
 
 
+
+
+
 class PersonFilmWork(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     film_work = models.ForeignKey('FilmWork', on_delete=models.CASCADE, default=None)
@@ -85,6 +88,7 @@ class FilmWorkType(models.TextChoices):
     TV_SHOW = 'tv_show', _('TV Show')
 
 
+
 class FilmWork(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(_('Название'), max_length=255)
@@ -101,6 +105,8 @@ class FilmWork(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     # genres = models.ManyToManyField(Genre, through='GenreFilmWork', verbose_name=_('Жанры'))
     # person = models.ManyToManyField(Person, through='PersonFilmWork', verbose_name=_('Персоны'))
+    genres = models.ManyToManyField(Genre, through='GenreFilmWork', verbose_name=_('Жанры'), related_name='filmworks')
+    persons = models.ManyToManyField(Person, through='PersonFilmWork', verbose_name=_('Персоны'), related_name='filmworks')
 
     class Meta:
         verbose_name = _('Кинопроизведение')

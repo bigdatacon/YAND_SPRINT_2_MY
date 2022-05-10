@@ -1,9 +1,13 @@
+--1.Попасть в plsql shell
+psql -U postgres
+
 CREATE DATABASE movies;
 
 \c movies;
 
 CREATE SCHEMA content;
 
+drop table content.film_work CASCADE;
 CREATE TABLE content.film_work (
     id            UUID PRIMARY KEY,
     title         TEXT,
@@ -16,6 +20,7 @@ CREATE TABLE content.film_work (
     created_at    TIMESTAMP WITH TIME ZONE,
     updated_at    TIMESTAMP WITH TIME ZONE
 );
+
 drop table content.genre CASCADE;
 CREATE TABLE content.genre (
     id          UUID PRIMARY KEY,
@@ -44,6 +49,8 @@ CREATE TABLE content.person (
     created_at TIMESTAMP WITH TIME ZONE,
     updated_at TIMESTAMP WITH TIME ZONE
 );
+
+
 drop table content.person_film_work CASCADE;
 CREATE TABLE content.person_film_work (
     id           UUID PRIMARY KEY,

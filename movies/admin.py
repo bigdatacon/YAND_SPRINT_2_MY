@@ -47,4 +47,5 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
+    search_fields = ('full_name',)
     pass
