@@ -5,5 +5,5 @@ from django.dispatch import receiver
 
 @receiver(post_save, sender='movies.Person')
 def congratulatory(sender, instance, created, **kwargs):
-    if created and instance.created_at == datetime.date.today():
+    if created and instance.created_at.date() == datetime.date.today():
         print(f"У {instance.full_name} сегодня день рождения! 🥳")
