@@ -16,7 +16,7 @@ CREATE TABLE content.film_work (
     created_at    TIMESTAMP WITH TIME ZONE,
     updated_at    TIMESTAMP WITH TIME ZONE
 );
-drop table content.genre CASCADE;
+
 CREATE TABLE content.genre (
     id          UUID PRIMARY KEY,
     name        TEXT,
@@ -25,7 +25,6 @@ CREATE TABLE content.genre (
     updated_at  TIMESTAMP WITH TIME ZONE
 );
 
-drop table content.genre_film_work CASCADE;
 CREATE TABLE content.genre_film_work (
     id           UUID PRIMARY KEY,
     film_work_id UUID,
@@ -36,7 +35,6 @@ CREATE TABLE content.genre_film_work (
     CONSTRAINT fk_genre_id FOREIGN KEY(genre_id) REFERENCES content.genre(id)
 );
 
-drop table content.person CASCADE;
 CREATE TABLE content.person (
     id         UUID PRIMARY KEY,
     full_name  VARCHAR(50),
@@ -44,7 +42,7 @@ CREATE TABLE content.person (
     created_at TIMESTAMP WITH TIME ZONE,
     updated_at TIMESTAMP WITH TIME ZONE
 );
-drop table content.person_film_work CASCADE;
+
 CREATE TABLE content.person_film_work (
     id           UUID PRIMARY KEY,
     film_work_id UUID,
