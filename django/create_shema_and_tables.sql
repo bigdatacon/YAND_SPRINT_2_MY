@@ -1,6 +1,3 @@
---1.Попасть в plsql shell
-psql -U postgres
-
 CREATE DATABASE movies;
 
 \c movies;
