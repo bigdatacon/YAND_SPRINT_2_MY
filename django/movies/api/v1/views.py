@@ -19,7 +19,6 @@ class MoviesApiMixin:
 
     def get_queryset(self):
         qs = GenreFilmWork.objects.select_related('film_work', 'genre'
-            'genres', 'persons'
         ).values(
             'id', 'film_work'
         ).annotate(
