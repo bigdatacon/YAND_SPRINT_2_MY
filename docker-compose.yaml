@@ -1,0 +1,34 @@
+# Файл должен начинаться с тега версии. Используем последнюю.
+version: '3'
+services:
+  postgres:
+    image: postgres:13-alpine
+    container_name: postgres_movies
+    env_file:
+      - db.env
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    ports:
+      # Перенаправляем запросы, поступающие к localhost:8010 на порт 8010.
+      - 5432:5432
+    network_mode: host
+
+  django:
+    build:
+      context: .
+    container_name: django_movies
+    env_file:
+      - django.env
+    volumes:
+      - static_volume:/data/static
+    depends_on:
+      - postgres
+    ports:
+      # Перенаправляем запросы, поступающие к localhost:8010 на порт 8010.
+      - 8010:8010
+    network_mode: host
+
+# Указываем Docker, какие именованные тома потребуются сервисам
+volumes:
+  postgres_volume:
+  static_volume:
