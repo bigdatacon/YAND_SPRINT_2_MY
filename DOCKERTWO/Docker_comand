@@ -1,2 +1,3 @@
 #сбор контейнер
 #docker-compose up -d
+#стандартно - docker-compose build, затем docker-compose up
