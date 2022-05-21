@@ -1,4 +1,6 @@
 FROM python:3.10
+RUN apt-get update
+RUN apt-get install -y postgresql-client
 EXPOSE 8010
 WORKDIR /movies_admin/
 COPY requirements.txt /movies_admin/
